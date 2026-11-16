@@ -1,0 +1,20 @@
+# Example crontab entry for pm25-flipboard.
+# Edit your crontab with:  crontab -e     (list it with: crontab -l)
+#
+# Fields: minute  hour  day-of-month  month  day-of-week  command
+#
+# Run every 30 minutes (at :00 and :30), only between 07:00 and 22:59 local time,
+# so the board stays quiet overnight. Cron uses wall-clock times, not time since boot.
+#
+# Replace the two paths below:
+#   - the Python interpreter  (find yours with: which python3)
+#   - the script              (use the FULL path; cron does not start in your folder)
+#
+# Output (and any errors) are appended to a log in your home folder. /tmp also
+# works but is cleared on reboot on many systems.
+
+*/30 7-22 * * * /usr/bin/python3 /home/YOUR_USER/pm25-flipboard/code/purpleair_to_vestaboard_datetime.py >> $HOME/aq_vestaboard.log 2>&1
+
+# To pause this job, put a # at the start of the line above.
+# On macOS, a script inside ~/Documents, ~/Desktop or ~/Downloads may be blocked
+# ("Operation not permitted"); keep it somewhere else under your home folder.
