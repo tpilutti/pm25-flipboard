@@ -33,8 +33,9 @@ SETUP
 2. Get a PurpleAir API read key:
    - Email contact@purpleair.com (or use the developer key form linked from
      https://community.purpleair.com/c/data/api/18) to request a key.
-   - Find your sensor's index by going to https://map.purpleair.com, clicking
-     your sensor, and reading the number after "select=" in the URL.
+   - Find a sensor's index by going to https://map.purpleair.com, clicking a
+     sensor (yours, or any public one near you), and reading the number after
+     "select=" in the URL. You do not need to own the sensor.
 
 3. Get a Vestaboard Cloud API token:
    - web.vestaboard.com -> Developer/API tab (or mobile app -> Settings ->

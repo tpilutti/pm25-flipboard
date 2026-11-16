@@ -39,7 +39,7 @@ A Vestaboard Note is 15 characters wide and 3 rows tall. Every line is built to 
 | Variable | Meaning |
 |---|---|
 | `PURPLEAIR_API_KEY` | PurpleAir read key |
-| `PURPLEAIR_SENSOR_INDEX` | Numeric ID of your sensor |
+| `PURPLEAIR_SENSOR_INDEX` | Numeric ID of the sensor to read (yours, or any public sensor) |
 | `VESTABOARD_API_TOKEN` | Vestaboard Cloud API token (write) |
 | `THRESHOLD_PM25` | Minimum PM2.5 (µg/m³) that triggers a board update |
 | `SENSOR_LABEL` (ping script only) | Text for row 1 |

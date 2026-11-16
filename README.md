@@ -1,6 +1,6 @@
 # pm25-flipboard
 
-Show your local air quality on a [Vestaboard Note](https://www.vestaboard.com/) split-flap display, using readings from your own [PurpleAir](https://www.purpleair.com/) sensor. A small Python script, run on a schedule, fetches the latest PM2.5 reading and flips the board when the air is worse than a threshold you choose.
+Show your local air quality on a [Vestaboard Note](https://www.vestaboard.com/) split-flap display, using readings from a [PurpleAir](https://www.purpleair.com/) sensor, which can be your own or any public one. A small Python script, run on a schedule, fetches the latest PM2.5 reading and flips the board when the air is worse than a threshold you choose.
 
 ![The Vestaboard Note showing a date and time, a PM2.5 reading and an AQI value](images/flipboard-photo.jpg)
 
@@ -34,7 +34,7 @@ AQI 59
 
 ## What you need
 
-- A PurpleAir sensor, plus its **sensor index** and a PurpleAir **API read key**
+- A PurpleAir **API read key**, and the **sensor index** of the sensor you want to track. **You do not need to own a sensor.** The API key is not tied to a single sensor, and any publicly registered one can be read with just the key and its index.
 - A Vestaboard Note, plus a Vestaboard **Cloud API token** with the *Write* permission
 - A computer that can run Python 3 and the `requests` package. A Mac or any Linux machine works, and a Raspberry Pi is a good always-on choice.
 
@@ -52,8 +52,13 @@ AQI 59
 
 ### 1. Get your credentials
 
-1. **PurpleAir read key.** Request one through the developer process described in the [PurpleAir community API forum](https://community.purpleair.com/c/data/api/18).
-2. **Sensor index.** On [map.purpleair.com](https://map.purpleair.com), click your sensor and read the number after `select=` in the URL.
+1. **PurpleAir API read key.** Request one through the developer process described in the [PurpleAir community API forum](https://community.purpleair.com/c/data/api/18). The same key works for any public sensor.
+2. **Sensor index.** On [map.purpleair.com](https://map.purpleair.com), click a sensor (yours, or a public outdoor one near you) and read the number after `select=` in the URL.
+
+   Things to know when using someone else's sensor:
+   - The board shows *that sensor's* air, so pick an outdoor sensor close to you, and check on the map that it is reporting recent data.
+   - Only **public** sensors work with these scripts. A sensor registered as private needs its own per-sensor `read_key`, which the scripts do not send. (This is separate from your account-wide API read key.)
+   - PurpleAir has terms, a data license and attribution requirements for API data. Read them before sharing or republishing readings.
 3. **Vestaboard token.** In the Vestaboard web app, open the Developer/API section, choose *Create New Token*, and enable **Write**. The token is shown only once, so save it somewhere safe.
 
 ### 2. Install the dependency
@@ -237,7 +242,7 @@ Not implemented. Listed so the repo shows only the code that actually ran.
 - **A systemd timer** instead of cron on the Pi.
 - **Remote access to the Pi** from outside the home network, for example with Raspberry Pi Connect or Tailscale, rather than opening ports on the router.
 - **A stable address for the Pi**, through a DHCP reservation on the router or its `.local` hostname.
-- **Multiple sensors** or a second line of data such as temperature.
+- **Multiple sensors**, such as averaging a few public sensors around you, or a second line of data such as temperature. PurpleAir has a multi-sensor endpoint for this, but it costs more points per call.
 
 ## How this was made
 
