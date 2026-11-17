@@ -1,6 +1,11 @@
 # pm25-flipboard
 
-Show your local air quality on a [Vestaboard Note](https://www.vestaboard.com/) split-flap display, using readings from a [PurpleAir](https://www.purpleair.com/) sensor, which can be your own or any public one. A small Python script, run on a schedule, fetches the latest PM2.5 reading and flips the board when the air is worse than a threshold you choose.
+Over the last couple years, smoke from fires in Canada has been making its way across the Great Lakes. 
+Sometimes it's pretty obvious the air quality has gone bad, and other times, it's not. This project
+addresses a need I had to know either just how bad it is, or when it has improved to go out and exercise.
+You can show your local air quality on a [Vestaboard Note](https://www.vestaboard.com/) flipboard display, using readings from a [PurpleAir](https://www.purpleair.com/) sensor, 
+which can be your own or any public one. A small Python script, run on a schedule, 
+fetches the latest PM2.5 reading and flips the board when the air is worse than a threshold you choose.
 
 ![The Vestaboard Note showing a date and time, a PM2.5 reading and an AQI value](images/flipboard-photo.jpg)
 
